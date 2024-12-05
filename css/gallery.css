@@ -421,41 +421,37 @@ html {
 .gallery-link:hover img {
     transform: scale(1.02);
 }
-
 .thumbnail-gallery {
     margin: 40px auto;
-    padding: 20px;
+    padding: 30px;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    max-width: 1200px;
+    width: 90%; /* Container width */
 }
 
 .thumbnail-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
+    width: 100%;
+    padding: 20px;
+}
+
+.thumbnail-wrapper {
+    margin: 0 auto;
+    max-width: 1200px; /* Maximum width of the content */
+    width: 100%;
 }
 
 .thumbnail {
     position: relative;
-    overflow: hidden;
+    width: 100%;
     border-radius: 10px;
-    transition: all 0.3s ease;
+    overflow: hidden;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    /* Adjusted aspect ratio container */
-    aspect-ratio: 3/4;  /* Better for vertical images */
+    transition: all 0.3s ease;
 }
 
-.thumbnail.vertical {
-    max-width: 300px;
-    margin: 0 auto;
-}
-
-.thumbnail:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+.thumbnail.horizontal {
+    aspect-ratio: 16/9;
 }
 
 .thumbnail img {
@@ -463,7 +459,12 @@ html {
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
+}
+
+.thumbnail:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 .thumbnail-overlay {
@@ -477,7 +478,7 @@ html {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
 .thumbnail:hover .thumbnail-overlay {
@@ -487,19 +488,20 @@ html {
 .thumbnail-caption {
     color: #5a5a5a;
     font-weight: 500;
-    font-size: 0.9em;
-    padding: 10px;
+    font-size: 1em;
+    padding: 12px 20px;
     background: rgba(255, 255, 255, 0.9);
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .thumbnail.vertical {
-        max-width: 250px;
+    .thumbnail-gallery {
+        width: 95%;
+        padding: 15px;
     }
     
     .thumbnail-container {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 10px;
     }
 }
